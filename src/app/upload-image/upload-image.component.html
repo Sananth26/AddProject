@@ -1,0 +1,241 @@
+
+
+<!--header1-->
+<div class="header" style="background-color: darkblue;" >
+</div>
+<!--header 2-->
+
+<div class="header1" style="margin-right: 5px;">
+      <label style="color: black;padding-top: 10px;padding-left: 30px;">
+       Document Sequence:</label>&nbsp;
+      <i style="color: #000000;"class="fas fa-list-ul"> &nbsp;
+      <label style="color: black;font-weight: 200;">Parllel</label>
+      </i>
+
+      <label style="padding-left: 10px;padding-top: 15px;">Start Date:</label>{{start_date}}
+      <label style=" padding-left: 10px;">End Date:</label>{{end_date}}
+
+      <div class="header-right" style=" padding-right: 30px; text-decoration: none; ">
+      <button class="circle" ><i class="fas fa-envelope" style="font-size:20px"></i></button>&nbsp;
+      <button class="circle" ><i class="fa fa-save" style="font-size:20px;"></i></button>&nbsp;
+      <button class="circle" ><i class="fas fa-file-excel" style="font-size:20px;"></i></button>&nbsp;
+      
+      </div>
+</div>
+
+
+<!--Expansion Panel-->
+<div class="matexpansionpannel">
+
+  <mat-expansion-panel #expansionPanel *ngFor="let st of students" style="margin-left: 10px;margin-right: 10px;
+  font-family: 'Times New Roman', Times, serif; padding-left: 00px;padding-right: 0px;">
+        <mat-expansion-panel-header (click)="expandPanel(expansionPanel, $event)" class="expansionHeader" style="color:darkblue;
+        height:60px;position: sticky;height: 50px;" >
+          <!--header Pannel-->
+           <mat-panel-title class="expansionTitle" style="color:black;">
+             &nbsp;&nbsp;{{st.id}}&nbsp;&nbsp;&nbsp;
+            <i class="far fa-file-alt" style="color: blue;font-size: 15px;"> </i>
+            <P style="width:220px;color: darkblue;font-family:'Times New Roman', Times, serif; ">
+            <a id="logout-button" (click)="openModal()" style="cursor:pointer;text-decoration:none;color:darkblue;font-size: 15px;">{{st.Documents}}</a>
+            </P>
+          </mat-panel-title>
+            <!--target And Actual Date-->
+          <mat-panel-title style="color:darkblue;font-family:'Times New Roman', Times, serif;position: sticky;">
+            <p class="expheader"style="font-size:11px">Target-Date:<u style="color: black;text-decoration: none;">
+              {{st.Category[0].Start_Date}}&nbsp;-&nbsp;{{st.Category[3].End_Date}}</u></p> 
+              <p class="expheader"style="font-size:11px">Actual-Date:<u style="color:black;text-decoration: none;">
+                {{st.Category[0].Start_Date}}&nbsp;-&nbsp;{{st.Category[3].End_Date}}</u></p>
+          </mat-panel-title>
+
+  </mat-expansion-panel-header>
+<!--horizontal-timeline-->
+<div class="container" style="padding:0px; margin:0px;margin-right: 100px; font-family: 'Times New Roman', Times, serif;">
+    <div class="row">
+    <div class="col-md-20">
+      <!--Box and badge-->
+    <div class ="box" style="display:block;width:100%;" >
+    <ul class="timeline timeline-horizontal" >
+        <li class="timeline-item"  *ngFor="let st1 of st.Category;let i=index;">
+            <div class="timeline-badge primary" style="padding: 0px;">
+            <i  style="color:green;font-size: 25px;" class="fas fa-check-square"></i>
+            </div>
+<!--panel-->
+        <div class="timeline-panel" style="width:300px;display:block; margin-top:40px;margin-right: 0px;
+                    margin-left: 0px;padding-right: 00px;">
+          <!--timeline heading-->
+          <div class="timeline-heading" style="padding-bottom: 0px;padding-top: 0;" >
+           <h5>
+            <a  id="category" (click)="openCategory()" style="cursor: pointer !important;font-weight: bold; 
+            font-family:Arial, Helvetica, sans-serif;  text-decoration:none;color:darkblue;font-size: 15px; ">
+            {{st1.Categoary}}
+            </a>            
+            <a id="emailSetting" (click)="openEmailSetting()" style="text-decoration: none;cursor:pointer;">
+
+            <i class="far fa-bell" style="color:black;padding-right:15px;padding-bottom:0;float:right;font-size: 12px;"></i>
+          
+           
+            </a>
+          </h5>
+
+      
+        </div><!--timeline body table-->
+          <div class="timeline-body" style="margin-left:0 ;">
+            <table style="height:300px;margin:0;padding: 0;">
+
+              <tr style="height:10px" style="border-bottom:3px solid #f2f2f2">
+                <td style="width: 80px;padding-top:0px;padding-bottom:0px;margin:0;"><h4 style="font-size:larger;color:black">
+                          Assigned to</h4>
+                </td>
+                <td style="width:158px;height:5px;padding-left: 10px;padding-right: 10px;padding-top:0px;padding-bottom:0px;">
+                  <h1 style="font-size:medium"><a id="logout-button" (click)="openModal()" style="text-decoration: none;cursor:pointer;
+                  color: black;"></a><a (click)="openSelectUser() " style="color:black;text-decoration: none;
+                  cursor: pointer;">{{st1.Assigned}}</a>
+                </h1>
+              </td>
+            </tr>
+
+              <tr style="border-bottom:3px solid #f2f2f2" >
+                <td style="width: 80px;padding-top:0px;padding-bottom:0px; "><h6>SLA</h6></td>
+                <td style="width:158px;padding-left: 12px;padding-right: 10px;padding-top: 5px;padding-bottom: 5px;padding-top:0px;
+                          padding-bottom:0px;">
+                  <input style="width: 35px; border: 1px solid black;border-radius: 10%;" type="number" size="3" value="{{st1.SLA}}">
+                </td>
+              </tr>
+
+
+              <tr>
+                <td rowspan="2" style="width: 80px;padding-top:0px;padding-bottom:0px;"><h5>Target</h5></td>
+                <td style="width:158px;height:5px; padding-top: 5px;padding-left: 10px;padding-right: 10px;padding-top:0px;padding-bottom:0px;">
+                  <my-date-picker name="mydate" [options]="myDatePickerOptions"
+                  [(ngModel)]="model"  placeholder="{{st1.Start_Date}}" *ngIf="(i==0)"></my-date-picker>
+                  <p *ngIf="!(i==0)">{{st1.Start_Date}}</p>
+                </td>
+              </tr>
+
+              <tr style="border-bottom:3px solid #f2f2f2;">
+                <td style="width:158px;" style="padding-top: 5px;padding-left: 10px;padding-right: 10px;
+                padding-top:0px;padding-bottom:0px;"><p>{{st1.End_Date}}</p></td>
+              </tr>
+
+              <tr style="border-bottom:3px solid #f2f2f2">
+                <td style="width: 80px;padding-top:0px;padding-bottom:0px;"><h5>Actual</h5></td>
+                <td style="width:158px;padding-left: 10px;padding-right: 10px;padding-top:0px;padding-bottom:0px;">{{st1.Start_Date}}&nbsp;-&nbsp;
+                  {{st1.End_Date}}</td>
+              </tr>
+
+              <tr style="border-bottom:3px solid #f2f2f2">
+                <td style="width: 80px;height:2px;padding-top:0px;padding-bottom:0px;"><h5>Approved</h5></td>
+                <td style="width:158px;padding-left: 10px;padding-right: 10px;padding-top:0px;padding-bottom:0px;">{{st1.Approved}}</td>
+              </tr>
+
+              <tr>
+                <td style="width: 100px;padding-right: 30px;padding-top:0px;padding-bottom:0px;"><h5>Status</h5></td>
+                <td style="width:155px;padding-left: 10px;padding-right: 10px;padding-top:0px;padding-bottom:0px;">
+                  <p style="color: green;">{{st1.Status}} 
+                  for the of the contennt to the content for this</p></td>
+              </tr>
+
+            </table>
+          </div>
+    </div>
+  </li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</mat-expansion-panel>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--
+<mat-accordion class="example">
+  <mat-expansion-panel  *ngFor="let st of students" style="margin-left: 40px;margin-right: 40px;font-family: 'Times New Roman', Times, serif;
+   padding-left: 00px;padding-right: 0px;">
+    <mat-expansion-panel-header class="expansionHeader" style="color:darkblue;" >
+      <mat-panel-title class="expansionTitle" style="color:darkblue;">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{st.id}}&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;<i class="far fa-file-alt" style="color: blue;font-size: 25px;"></i>&nbsp;&nbsp;<P style="width:600px;
+        font-family: 'Times New Roman', Times, serif;font-weight:500;">{{st.Documents}}</P>
+       
+      </mat-panel-title>
+      <mat-panel-title style="color:darkblue;font-family: 'Times New Roman', Times, serif;">
+        <p class="expheader"style="font-size:11px">Target-Date:<u style="color: black;text-decoration: none;">{{st.Category[0].Start_Date}}&nbsp;-&nbsp;{{st.Category[3].End_Date}}</u></p>
+        &nbsp;&nbsp;<p class="expheader"style="font-size:11px">Actual-Date:<u style="color:black;text-decoration: none;">{{st.Category[0].Start_Date}}&nbsp;-&nbsp;{{st.Category[3].End_Date}}</u></p>
+      </mat-panel-title>
+
+  </mat-expansion-panel-header>
+
+<div class="container" style="display:block;width:100%;padding-left:0px; font-family: 'Times New Roman', Times, serif;">
+  <div class="row">
+  <div class="col-md-20">
+    <div class ="box" style="display:inline-block;width:100%;">
+    <ul class="timeline timeline-horizontal" style="margin: 0px;">
+      <li class="timeline-item"  *ngFor="let st1 of st.Category">
+        <div class="timeline-badge primary">
+        <i><mat-icon style="color: green;">verified_user</mat-icon></i>
+      </div>
+
+        <div class="timeline-panel" style="width:290px;margin-top:50px;margin-right: 10px;margin-left: 0px;padding-right: 00px;">
+          <div class="timeline-heading" >
+            <tr><td style="width: 240px;"><h5 style="border-bottom: 3px Solid rgb(235, 229, 229);">
+            <a style="cursor: pointer !important;font-weight: bold; font-family:'Times New Roman', Times, serif;
+            text-decoration:none;color:darkblue;
+            font-size: 16px;">{{st1.Categoary}}</a></h5></td>
+            
+            <i class="far fa-bell" style="color:black;float:right;font-size: 18px;"></i></tr>
+            
+      
+        </div>
+
+          <div class="timeline-body"  >
+            <table style="font-size: 14px;">
+              <tr><td colspan="2">
+                <a style="cursor: pointer !important; font-size: 15px;font-family:'Times New Roman', Times, serif; color:darkblue; 
+              text-decoration:none;">
+               Assigned to:</a>
+               <select name="user" id="user" style="display: inline;">
+                <option value="{{st1.Assigned}}">{{st1.Assigned}}</option>
+                <option value="selct user">Select User</option>
+              </select>&nbsp;
+              <a href="" style="font-size: smaller;color: #000000;text-decoration: none;">Select User </a>       
+                </td></tr>
+
+                <tr style="margin:100px"><td  style="padding-bottom:5px;">Target:</td><td style="float: right;"><p style="font-size: 14px;
+                padding-right:5px;"> SLA:</p>
+                  <input style="width: 35px; border: 1px solid black;border-radius: 10%;" type="number" size="3" value="{{st1.SLA}}"></td></tr>
+                <tr><td style="width: 130px; font-size: smaller;"><my-date-picker  name="mydate" [options]="myDatePickerOptions"
+                  [(ngModel)]="model"  value="{{st1.start_date}}"required></my-date-picker>
+                  </td><td style="width: 130px; font-size:smaller;margin-right: 1px;"> <my-date-picker style="width:50%" name="mydate" [options]="myDatePickerOptions"
+                    [(ngModel)]="model" not-required></my-date-picker>
+                    </td></tr>
+
+
+              <tr><td colspan="3"><p style="font-size: 15px;">Actual:</p>{{st1.Start_Date}}&nbsp;&nbsp;&nbsp;{{st1.End_Date}}</td></tr>
+
+              <tr><td><p style="font-size: 15px;">Approve:</p>{{ st1.Approved }}</td></tr>
+
+              <tr><td> <p style="font-size: 15px;">Status:</p><span  style="color: green;" >{{st1.Status}}</span></td></tr>
+           </table> 
+          </div>
+    </div>
+  </li>
+  </ul>
+  </div>
+  </div>
+</div></div>
+</mat-expansion-panel>
+</mat-accordion>-->
+

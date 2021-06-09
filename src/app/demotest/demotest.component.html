@@ -1,0 +1,13 @@
+
+<!--div class="calendar" style="margin-top: 60px;margin-left:30px;margin-right: 30px;">
+    <ejs-schedule width='100%' height='450px'  [selectedDate]="selectedDate" [eventSettings]="eventSettings" >
+        <e-views>
+          <e-view option='Month' [showWeekNumber]="showWeekNumber" [readonly]="isReadOnly"></e-view>
+        </e-views>
+      </ejs-schedule><div class="calendar" style="margin-top: 60px;">
+<ngx-fullcalendar  defaultView="month" [events]="events" [options]="options"></ngx-fullcalendar>
+</div>
+</div>-->
+<full-calendar dateClick="dateClick($event)" (click)="eventClick($event)" [options]="calendarOptions"></full-calendar>
+<full-calendar [options]="calendarOptions" ></full-calendar>
+

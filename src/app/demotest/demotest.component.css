@@ -1,0 +1,14 @@
+.header {
+    height: 50px !important;
+    top: 0;
+    width: 100%;
+    color: white;
+    margin: 0 auto;
+    z-index: 50;
+    position: fixed;
+    font-size: 20px;
+    padding: 25px;
+    font-family: 'Times New Roman', Times, serif;
+  }
+
+ 

@@ -1,0 +1,9 @@
+.example{
+margin: 300px;
+padding-top: 300px;
+  color:red;
+  border: 10px Solid black;
+}
+.card.disabled {
+  opacity: 0.5;
+}
